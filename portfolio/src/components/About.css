@@ -1,0 +1,131 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(32px, 6vw, 88px);
+}
+
+.about-figure {
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 400 / 368;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
+.about-figure img {
+  width: 100%;
+  height: 100%;
+}
+
+.about-text {
+  max-width: 62ch;
+}
+
+.about-text + .about-text {
+  margin-top: 14px;
+}
+
+.mini-title {
+  margin: 28px 0 12px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 28px 0 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  min-width: 160px;
+  padding: 16px 22px;
+}
+
+.stat dt {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.stat dd {
+  margin: 0;
+  font: 800 2rem/1.1 var(--font-display);
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-figure {
+    max-width: 340px;
+  }
+}
+
+/* ── Living character (canvas drawn by hooks/useCharacter.js) ── */
+.about-figure {
+  position: relative;
+  contain: layout paint;
+  pointer-events: none;
+  translate: 0 calc(var(--ap, 0) * 26px); /* gentle drift while scrolling */
+}
+
+.about-figure img,
+.about-figure canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-figure canvas {
+  opacity: 0;
+  will-change: transform;
+}
+
+.about-figure.is-ready canvas {
+  opacity: 1;
+}
+
+.about-figure.is-ready img {
+  visibility: hidden;
+}
+
+.about .chip {
+  transition: opacity 0.7s var(--ease) var(--rd), transform 0.7s var(--ease) var(--rd), translate 0.3s var(--ease),
+    border-color 0.25s, box-shadow 0.3s;
+}
+
+.about .chip:hover {
+  translate: 0 -3px;
+  border-color: var(--orange);
+  box-shadow: 0 8px 18px -10px rgba(242, 106, 31, 0.55);
+}
+
+.stat {
+  transition: opacity 0.85s var(--ease) var(--rd), transform 0.85s var(--ease) var(--rd),
+    translate 0.35s var(--ease), border-color 0.3s;
+}
+
+.stat:hover {
+  translate: 0 -5px;
+  border-color: var(--orange);
+}
+
+.stat dd {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-figure {
+    translate: none;
+  }
+}
