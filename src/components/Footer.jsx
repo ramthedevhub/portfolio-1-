@@ -48,12 +48,19 @@ export default function Footer({ onToggleTheme }) {
   const [inputVal, setInputVal] = useState('')
   const [cmdHistory, setCmdHistory] = useState(['whoami', 'cat skills.txt'])
   const [historyIndex, setHistoryIndex] = useState(-1)
-  const terminalEndRef = useRef(null)
+  const terminalBodyRef = useRef(null)
+  const isMountedRef = useRef(false)
   const inputRef = useRef(null)
 
-  // Scroll to bottom of terminal when history changes
+  // Scroll to bottom of terminal ONLY when user runs a command, never on initial mount or page refresh
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    if (!isMountedRef.current) {
+      isMountedRef.current = true
+      return
+    }
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight
+    }
   }, [history])
 
   // Execute terminal command
@@ -410,7 +417,7 @@ Databases: PostgreSQL, Redis, SQLite | Cloud: AWS, GCP, Docker`
             </div>
 
             {/* Terminal Body */}
-            <div className="terminal-body">
+            <div className="terminal-body" ref={terminalBodyRef}>
               <div className="terminal-history">
                 {history.map((item, idx) => (
                   <div key={idx} className="terminal-entry">
@@ -447,8 +454,6 @@ Databases: PostgreSQL, Redis, SQLite | Cloud: AWS, GCP, Docker`
                 />
                 <span className="terminal-cursor" aria-hidden="true" />
               </div>
-
-              <div ref={terminalEndRef} />
             </div>
           </div>
         </Reveal>
