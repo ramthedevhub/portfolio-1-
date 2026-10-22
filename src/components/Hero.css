@@ -174,6 +174,18 @@
   opacity: 1;
 }
 
+.scene-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: end;
+  width: min(100%, max(300px, calc((100svh - var(--nav-h) - clamp(20px, 4vw, 56px) * 2 - 44px) * 1.148)));
+}
+
+.scene-col .scene {
+  width: 100%;
+}
+
 .cord {
   left: 44.058%;
   top: 0;
@@ -237,6 +249,46 @@
 
 .cordhit::after {
   display: none;
+}
+
+/* Small interactive hint line below the character */
+.lamp-cord-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px auto 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--orange) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--orange) 30%, var(--border));
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 3px 10px -3px rgba(242, 106, 31, 0.22);
+  transition: transform 0.25s var(--ease), background-color 0.2s, border-color 0.2s, box-shadow 0.25s;
+  user-select: none;
+}
+
+.lamp-cord-hint:hover {
+  transform: translateY(-1.5px);
+  background: color-mix(in srgb, var(--orange) 18%, var(--surface));
+  border-color: var(--orange);
+  box-shadow: 0 6px 16px -4px rgba(242, 106, 31, 0.38);
+}
+
+.lamp-hint-spark {
+  font-size: 0.8rem;
+  display: inline-block;
+  animation: hintSparkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes hintSparkle {
+  0% { transform: scale(0.9) rotate(-6deg); }
+  100% { transform: scale(1.15) rotate(6deg); }
 }
 
 /* ── Scroll cue ────────────────────────────────────────────── */

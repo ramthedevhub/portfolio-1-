@@ -129,48 +129,60 @@ export default function Hero({ theme, setTheme }) {
           </div>
         </div>
 
-        <div className="scene intro scene-in" ref={sceneRef} style={{ '--i': 2 }}>
-          <img
-            className="plate"
-            src="/images/hero-light.webp"
-            width="690"
-            height="601"
-            alt="Illustration of a developer in glasses typing on a laptop in an orange bean bag chair, with a hanging lamp, a shelf of books and a plant"
-            fetchPriority="high"
-            decoding="async"
-            draggable="false"
-          />
-          <img
-            className="plate plate-dark"
-            src="/images/hero-dark.webp"
-            width="690"
-            height="601"
-            alt=""
-            aria-hidden="true"
-            decoding="async"
-            draggable="false"
-          />
-          <canvas className="head" ref={headRef} width="234" height="320" aria-hidden="true" />
-          <img
-            className="cord"
-            src="/images/lamp-cord.webp"
-            width="13"
-            height="264"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-          <canvas className="fx" ref={fxRef} width="350" height="540" aria-hidden="true" />
+        <div className="scene-col">
+          <div className="scene intro scene-in" ref={sceneRef} style={{ '--i': 2 }}>
+            <img
+              className="plate"
+              src="/images/hero-light.webp"
+              width="690"
+              height="601"
+              alt="Illustration of a developer in glasses typing on a laptop in an orange bean bag chair, with a hanging lamp, a shelf of books and a plant"
+              fetchPriority="high"
+              decoding="async"
+              draggable="false"
+            />
+            <img
+              className="plate plate-dark"
+              src="/images/hero-dark.webp"
+              width="690"
+              height="601"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              draggable="false"
+            />
+            <canvas className="head" ref={headRef} width="234" height="320" aria-hidden="true" />
+            <img
+              className="cord"
+              src="/images/lamp-cord.webp"
+              width="13"
+              height="264"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
+            <canvas className="fx" ref={fxRef} width="350" height="540" aria-hidden="true" />
+            <button
+              className="bulb"
+              type="button"
+              onClick={toggle}
+              onPointerEnter={preload}
+              onFocus={preload}
+              aria-pressed={isDark}
+              aria-label={isDark ? 'Turn the lamp on (light mode)' : 'Turn the lamp off (dark mode)'}
+            />
+            <button className="bulb cordhit" type="button" onClick={toggle} tabIndex={-1} aria-hidden="true" />
+          </div>
           <button
-            className="bulb"
             type="button"
+            className="lamp-cord-hint intro"
+            style={{ '--i': 4 }}
             onClick={toggle}
-            onPointerEnter={preload}
-            onFocus={preload}
-            aria-pressed={isDark}
-            aria-label={isDark ? 'Turn the lamp on (light mode)' : 'Turn the lamp off (dark mode)'}
-          />
-          <button className="bulb cordhit" type="button" onClick={toggle} tabIndex={-1} aria-hidden="true" />
+            aria-label={isDark ? 'Pull lamp cord for day mode' : 'Pull lamp cord for dark mode'}
+          >
+            <span className="lamp-hint-spark" aria-hidden="true">💡</span>
+            <span>{isDark ? 'Pull lamp cord for day mode' : 'Pull lamp cord for dark mode'}</span>
+          </button>
         </div>
       </div>
 
