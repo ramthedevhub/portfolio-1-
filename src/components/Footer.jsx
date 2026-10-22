@@ -135,11 +135,11 @@ echo "Status:   Open to full-time remote/hybrid roles"`
 ]`
         } else if (arg === 'certifications.txt' || arg === 'certifications') {
           output = `1. Google Cloud Certified Associate Cloud Engineer (Credly verified)
-2. Google Cloud Engineering Certificate (Credly verified)
+2. HackerRank Java (Basic) Certificate (Verified: hackerrank.com/certificates/3cc9033cd4f9)
 3. AWS Academy Graduate – Cloud Architecting (Credly verified)
-4. Coursera Java Programming (Board Infinity - Verified)
-5. UiPath Automation Developer Associate Training
-6. Software Engineering Job Simulation (Accenture & JPMorganChase)`
+4. Google Cloud Engineering Certificate (Credly verified)
+5. Coursera Java Programming (Board Infinity - Verified)
+6. UiPath Automation Developer Associate Training`
         } else if (arg === 'experience.txt') {
           output = `Internships & Traineeships:
 • Datavalley India - Cybersecurity Intern (OWASP Top 10, Vulnerability Assessments)
@@ -172,9 +172,10 @@ Databases: PostgreSQL, Redis, SQLite | Cloud: AWS, GCP, Docker`
       case 'certifications':
         output = `Top Verified Certifications:
 ✔ Google Cloud Certified Associate Cloud Engineer (Credly)
-✔ Google Cloud Engineering Certificate (Credly)
+✔ HackerRank Java (Basic) Certificate (Verified)
 ✔ AWS Academy Graduate – Cloud Architecting (Credly)
-✔ Coursera Fundamentals of Java Programming (Verified)`
+✔ Coursera Fundamentals of Java Programming (Verified)
+✔ Google Cloud Engineering Certificate (Credly)`
         isSuccess = true
         break
 

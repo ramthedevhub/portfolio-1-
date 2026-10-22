@@ -103,8 +103,22 @@
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
   margin-top: 2rem;
+}
+
+.hero-resume-btn {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.25s var(--ease), border-color 0.2s, background-color 0.2s;
+}
+
+.hero-resume-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
 }
 
 /* ── Illustration ──────────────────────────────────────────── */

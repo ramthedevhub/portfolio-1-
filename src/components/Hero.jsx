@@ -3,6 +3,7 @@ import { hero, profile } from '../data/portfolioData'
 import useHeadTracking from '../hooks/useHeadTracking'
 import useLamp from '../hooks/useLamp'
 import Icon from './Icon'
+import ResumeModal from './ResumeModal'
 import './Hero.css'
 
 // Letters of a line, each wrapped so they can rise in one after another.
@@ -61,6 +62,7 @@ export default function Hero({ theme, setTheme }) {
 
   // The intro replays every time the hero scrolls back into view (as in the original page)
   const [out, setOut] = useState(false)
+  const [resumeOpen, setResumeOpen] = useState(false)
   useEffect(() => {
     const el = heroRef.current
     if (!el || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -123,9 +125,14 @@ export default function Hero({ theme, setTheme }) {
             <a className="btn btn-primary" href="#projects">
               View my work <Icon name="arrow-right" size={18} />
             </a>
-            <a className="btn btn-ghost" href={profile.resume} download={profile.resumeFileName}>
-              Download résumé <Icon name="download" size={18} />
-            </a>
+            <button
+              type="button"
+              className="btn btn-ghost hero-resume-btn"
+              onClick={() => setResumeOpen(true)}
+              aria-haspopup="dialog"
+            >
+              View &amp; Download résumé <Icon name="file" size={18} />
+            </button>
           </div>
         </div>
 
@@ -190,6 +197,8 @@ export default function Hero({ theme, setTheme }) {
         <span>About me</span>
         <Icon name="chevron-down" size={18} />
       </a>
+
+      <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
     </section>
   )
 }

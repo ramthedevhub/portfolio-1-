@@ -286,7 +286,7 @@ export const experience = [
   },
   {
     id: 'bluestock',
-    date: 'Oct – Nov 2024',
+    date: 'Oct – Nov 2025',
     organization: 'Bluestock',
     role: 'Software Development Engineer Intern',
     logo: '/images/logo-bluestock.webp',
@@ -429,6 +429,20 @@ export const certifications = [
     links: [
       { label: 'Credly badge', href: 'https://www.credly.com/badges/bbd6a1fc-7f3d-4eae-85a5-6c5ce466e7c6/public_url' },
       { label: 'View certificate', href: 'https://drive.google.com/file/d/1g1jLt_qfbdq0zXHkoToqo5DBaxuqYIRn/view?usp=drive_web', primary: true },
+    ],
+  },
+  {
+    id: 'hackerrank-java',
+    category: 'certification',
+    badge: 'HR',
+    color: '#00ea64',
+    date: 'Certified',
+    title: 'Java (Basic) Certificate',
+    issuer: 'HackerRank',
+    meta: 'Certificate ID: 3cc9033cd4f9 · Problem Solving & Core Java',
+    skills: ['Java', 'OOP', 'Data Structures', 'Problem Solving'],
+    links: [
+      { label: 'Verify', href: 'https://www.hackerrank.com/certificates/3cc9033cd4f9', primary: true },
     ],
   },
   {

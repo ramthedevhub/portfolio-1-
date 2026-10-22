@@ -19,7 +19,7 @@ const searchText = (cert) =>
 const hasCredlyOrVerify = (cert) =>
   cert.links?.some((l) => {
     const text = `${l.label || ''} ${l.href || ''}`.toLowerCase()
-    return text.includes('credly') || text.includes('verify')
+    return text.includes('credly') || text.includes('verify') || text.includes('hackerrank')
   })
 
 // Prioritize items having Credly or Verify links first, then verified platform certs
